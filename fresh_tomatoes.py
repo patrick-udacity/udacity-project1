@@ -106,7 +106,7 @@ main_page_content = '''
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+            <a class="navbar-brand" href="#">Entertainment Center Movie Trailers - Project One</a>
           </div>
         </div>
       </div>
@@ -119,10 +119,12 @@ main_page_content = '''
 '''
 
 # A single movie entry html template
+#Add functionality to display the movie rating and duration
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
+    <h2>{movie_title} ({rating})</h2>
+    <h3>Length: {duration} minutes</h3>
 </div>
 '''
 
@@ -138,6 +140,8 @@ def create_movie_tiles_content(movies):
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
+            duration=movie.duration,
+            rating=movie.rating,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id
         )
